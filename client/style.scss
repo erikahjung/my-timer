@@ -27,7 +27,19 @@
 }
 
 button {
-  background-color: red;
   color: white;
+  height: 40px;
+  width: 80px;
 }
 
+#start-button {
+  background-color: green;
+}
+
+#stop-button {
+  background-color: red;
+}
+
+#restart-button {
+  background-color: blue;
+}
