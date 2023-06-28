@@ -2,31 +2,25 @@ import React, { useState, useEffect } from "react";
 
 export const Timer = () => {
   const [timer, setTimer] = useState(0);
-  const [intervalID, setIntervalID] = useState(null);
+  const [isActive, setIsActive] = useState(false);
 
-  // useEffect(() => {
-  //   setIntervalID(setInterval(() => setTimer((sec) => sec + 1), 1000));
-
-  //   return () => {
-  //     //setInterval is cleared on component unmount
-  //     clearInterval(intervalID);
-  //   }
-  // }, []);
-
-  const startTimer = () => {
-    if (!intervalID) {
-      setIntervalID(setInterval(() => setTimer((sec) => sec + 1), 1000));
+  useEffect(() => {
+    let intervalID = null;
+    if (isActive) {
+      intervalID = setInterval(() => setTimer((sec) => sec + 1), 1000);
+    } else {
+      clearInterval(intervalID);
     }
-  };
 
-  const stopTimer = () => {
-    clearInterval(intervalID);
-    setIntervalID(null);
-  };
+    return () => {
+      //setInterval is cleared on component unmount
+      clearInterval(intervalID);
+    }
+  }, [isActive, timer]);
 
   const restartTimer = () => {
-    stopTimer();
     setTimer(0);
+    setIsActive(false);
   };
 
   return (
@@ -34,8 +28,7 @@ export const Timer = () => {
       <div id='timer'>
         {timer}
       </div>
-      <button id="start-button" onClick={startTimer}>START</button>
-      <button id="stop-button" onClick={stopTimer}>STOP</button>
+      <button id={isActive ? "stop-button" : "start-button"} onClick={() => setIsActive((state) => !state)}>{isActive ? "STOP" : "START"}</button>
       <button id="restart-button" onClick={restartTimer}>RESTART</button>
     </>
   )
