@@ -1,7 +1,45 @@
 #root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //change gap to relative
+  gap: 10px;
+  width: 100vw;
+  height: 100vh;
   background-color: black;
 
   h1 {
     color: white;
   }
+}
+
+#timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33vw;
+  height: 10vh;
+  background-color: white;
+  //change font-size to relative
+  font-size: 28px;
+}
+
+button {
+  color: white;
+  height: 40px;
+  width: 80px;
+}
+
+#start-button {
+  background-color: green;
+}
+
+#stop-button {
+  background-color: red;
+}
+
+#restart-button {
+  background-color: blue;
 }
