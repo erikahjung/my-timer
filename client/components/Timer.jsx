@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Count from "./Count.jsx";
+import MemoCount from "./MemoCount.jsx";
 
 export const Timer = () => {
   const [timer, setTimer] = useState(0);
@@ -30,6 +32,8 @@ export const Timer = () => {
       </div>
       <button id={isActive ? "stop-button" : "start-button"} onClick={() => setIsActive((state) => !state)}>{isActive ? "STOP" : "START"}</button>
       <button id="restart-button" onClick={restartTimer}>RESTART</button>
+      <Count/>
+      <MemoCount/>
     </>
   )
 };
